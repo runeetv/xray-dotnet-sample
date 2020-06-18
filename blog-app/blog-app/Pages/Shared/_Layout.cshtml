@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -40,23 +41,18 @@
     <div class="container">
 
         <div class="row">
+            <!--Left Column -->
             <div class="col-md-3 text-sm-left">
-                <br />
-                AWS News
-                <hr />
-                <p><a href="#">AWS Transit Gateway is Now Available in AWS Africa (Cape Town) and AWS Europe (Milan) Regions</a> Jun 15, 2020</p>
-                <br />
-                <p><a href="#">FreeRTOS over-the-air update (OTA) now supports new job configurations</a>  Jun 15, 2020</p>
+                <partial name="News.cshtml" model="@Model.News" />
             </div>
-            <div class="col-md-8 text-justify">@RenderBody()</div>
-            <div class="col-md-1 text-sm-left">
-                <br />
-                Categories
-                <hr />
-                <a href="#">AWS</a> <a href="#">S3</a> <a href="#">EC2</a> <a href="#">DynamoDB</a>
-                <hr />
 
-                <img src="/images/ad/AWS.png" alt="Start Your Free Trial Now" width="100" height="150" class="alignnone size-full wp-image-58843 lazyloaded" data-lazy-src="https://webcdn-adespressoinc.netdna-ssl.com/wp-content/uploads/2018/07/free-trial-planet-2-med.jpg" data-was-processed="true">
+            <!--Main Body -->
+            <div class="col-md-8 text-justify">@RenderBody()</div>
+
+            <!--Right Column -->
+            <div class="col-md-1 text-sm-left">
+                <partial name="Category.cshtml" model="@Model.Categories" />
+                <img src="data:image/jpg;base64,@(Convert.ToBase64String(Model.Image))" alt="ad" width="100" height="150" />
             </div>
         </div>
         @*<main role="main" class="pb-3">
@@ -66,7 +62,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - blog_app - <a asp-area="">Your IP : X.X.X.X</a>
+            &copy; 2020 - blog_app - <a asp-area="">Your IP : @Model.ClientIP</a>
         </div>
     </footer>
 

@@ -20521,6 +20521,11 @@
   "RootNamespace": "blog_app",
   "Documents": [
     {
+      "FilePath": "c:\\Official\\Immersion Days NYC\\New Content\\X-Ray\\xray-dotnet-sample\\src\\blog-app\\blog-app\\Pages\\Shared\\News.cshtml",
+      "TargetPath": "Pages\\Shared\\News.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Official\\Immersion Days NYC\\New Content\\X-Ray\\xray-dotnet-sample\\src\\blog-app\\blog-app\\Pages\\_ViewImports.cshtml",
       "TargetPath": "Pages\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -20553,6 +20558,11 @@
     {
       "FilePath": "c:\\Official\\Immersion Days NYC\\New Content\\X-Ray\\xray-dotnet-sample\\src\\blog-app\\blog-app\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Official\\Immersion Days NYC\\New Content\\X-Ray\\xray-dotnet-sample\\src\\blog-app\\blog-app\\Pages\\Shared\\Category.cshtml",
+      "TargetPath": "Pages\\Shared\\Category.cshtml",
       "FileKind": "mvc"
     }
   ],
