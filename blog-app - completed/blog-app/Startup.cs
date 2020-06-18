@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using blog_app.Models;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace blog_app
 {
@@ -28,6 +29,7 @@ namespace blog_app
             services.AddRazorPages();
             services.AddTransient<IBlogRepository, MockBlogRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(Configuration["LocalSqlConnection"]));
 
         }
 

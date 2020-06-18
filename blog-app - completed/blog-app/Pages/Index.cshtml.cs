@@ -10,6 +10,7 @@ using System.Web;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Xml.Linq;
+using Microsoft.Extensions.Configuration;
 
 namespace blog_app.Pages
 {
@@ -26,7 +27,7 @@ namespace blog_app.Pages
         public List<News> News { get; set; }
 
         public byte[] Image { get; set; }
-        public IndexModel(ILogger<IndexModel> logger , IBlogRepository blogRepository , IHttpContextAccessor accessor)
+        public IndexModel(ILogger<IndexModel> logger , IBlogRepository blogRepository , IHttpContextAccessor accessor , IConfiguration configuration)
         {
             _logger = logger;
             _blogRepository = blogRepository;
@@ -36,7 +37,7 @@ namespace blog_app.Pages
             Posts = _blogRepository.GetBlogPosts();
             Image = LoadAdRotaor();
             ClientIP = GetClientIP();
-            News = GetAWSNews();
+            News = GetAWSNews();           
         }
 
 
