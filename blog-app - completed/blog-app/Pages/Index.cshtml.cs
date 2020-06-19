@@ -11,6 +11,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Xml.Linq;
 using Microsoft.Extensions.Configuration;
+using blog_app.Data;
 
 namespace blog_app.Pages
 {
@@ -19,7 +20,9 @@ namespace blog_app.Pages
         private readonly ILogger<IndexModel> _logger;
         private IBlogRepository _blogRepository;
         private IHttpContextAccessor _accessor;
-
+        private DDBHelper _ddbHelper;
+        private IConfiguration _configuration;
+        private AWSHelper _AWSHelper;
         public List<BlogCategory> Categories { get; set; }
         public List<BlogPost> Posts { get; set; }
         public string ClientIP { get; set; }
@@ -32,20 +35,36 @@ namespace blog_app.Pages
             _logger = logger;
             _blogRepository = blogRepository;
             _accessor = accessor;
+            _configuration = configuration;
+
 
             Categories = _blogRepository.GetBlogCategories();
             Posts = _blogRepository.GetBlogPosts();
-            Image = LoadAdRotaor();
+            Image = LoadAdRotaor().Result;
             ClientIP = GetClientIP();
-            News = GetAWSNews();           
+            News = GetAWSNews();
+            CaptureUserInfo(ClientIP);
         }
 
 
-        private byte[] LoadAdRotaor()
+        private async Task<byte[]> LoadAdRotaor()
         {
             byte[] imageBinary = null;
-            string image =  Environment.CurrentDirectory + "/wwwroot/images/ad/AWS.png";
-            imageBinary = System.IO.File.ReadAllBytes(image);
+            if (_configuration["Execute"] == "Local")
+            {
+                string image = Environment.CurrentDirectory + "/wwwroot/images/ad/AWS.png";
+                imageBinary = System.IO.File.ReadAllBytes(image);
+            }
+            else
+            {
+                _AWSHelper = new AWSHelper();
+                _ddbHelper = new DDBHelper(_configuration["DynamoDBTable"]);
+                var doc = _ddbHelper.GetItems(1);
+                var filename = doc["ad-s3-filename"];
+
+                imageBinary = await _AWSHelper.GetImageFromS3Bucket(_configuration["S3BucketName"],filename);
+            }
+
             return imageBinary;
         }
         public void OnGet()
@@ -86,5 +105,11 @@ namespace blog_app.Pages
         }
 
       
+        private void CaptureUserInfo(string ClientI)
+        {
+            _AWSHelper = new AWSHelper();
+            _AWSHelper.AddMessageToSQS(_configuration["SQSServiceURL"], ClientIP);
+        }
+
     }
 }
