@@ -27,7 +27,8 @@ namespace blog_app
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddTransient<IBlogRepository, MockBlogRepository>();
+            //services.AddTransient<IBlogRepository, MockBlogRepository>();
+            services.AddTransient<IBlogRepository, BlogRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(Configuration["LocalSqlConnection"]));
 
