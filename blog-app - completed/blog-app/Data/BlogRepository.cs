@@ -13,19 +13,19 @@ namespace blog_app.Models
         private BlogDbContext _blogDbContext;
         private SqlHelper _sqlHelper;
         private string _connString;
+        private IConfiguration _configuration;
         public BlogRepository(BlogDbContext blogDbContext, IConfiguration config)
         {
+            _configuration = config;
             _blogDbContext = blogDbContext;
-            _connString = config["LocalSqlConnection"];
+            _connString = _configuration["SQLConnectionString"];
         }                
 
         public List<BlogCategory> GetBlogCategories()
         {
             _sqlHelper = new SqlHelper(_connString);
             DataTable dt = _sqlHelper.GetDataTable("select * from BlogCategory");
-
             List<BlogCategory> categories = new List<BlogCategory>();
-
             foreach(DataRow row in dt.Rows)
             {
                 var cat = new BlogCategory { Id = (int)row.ItemArray[0], Name = row.ItemArray[1].ToString() };

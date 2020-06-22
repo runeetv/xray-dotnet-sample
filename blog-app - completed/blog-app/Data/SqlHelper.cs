@@ -20,20 +20,12 @@ namespace blog_app.Models
         {
             using (var conn = new SqlConnection(_connectionString))
             {
-                conn.Open();
-                //var command = new SqlCommand(commandText, conn);
+                conn.Open();                
                 var command = new TraceableSqlCommand(commandText, conn,true);
                 command.CommandType = CommandType.Text;
                 var sqlReader = command.ExecuteReader();
                 var dataTable = new DataTable();
                 dataTable.Load(sqlReader);
-
-                //sqlReader.f
-                //var dataset = new DataSet();
-                //var dataAdapter = new SqlDataAdapter();
-                //dataAdapter.Fill(dataset);
-                //conn.Close();
-                //return dataset.Tables[0];
 
                 return dataTable;
             }

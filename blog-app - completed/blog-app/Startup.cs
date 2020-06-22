@@ -35,7 +35,7 @@ namespace blog_app
                 services.AddTransient<IBlogRepository, BlogRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(Configuration["RemoteSqlConnectinstring"]).AddXRayInterceptor(true));
+            services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(Configuration["SQLConnectionString"]).AddXRayInterceptor(true));
             AWSSDKHandler.RegisterXRayForAllServices(); //place this before any instantiation of AmazonServiceClient
 
         }

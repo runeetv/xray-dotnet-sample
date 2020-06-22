@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using blog_app.Data;
 using Amazon.XRay.Recorder.Handlers.System.Net;
 using System.Net;
+using Amazon.XRay.Recorder.Core;
+
 
 namespace blog_app.Pages
 {
@@ -43,7 +45,7 @@ namespace blog_app.Pages
             Categories = _blogRepository.GetBlogCategories();
             Posts = _blogRepository.GetBlogPosts();
             Image = LoadAdRotaor().Result;
-            ClientIP = GetClientIP();
+            ClientIP = AWSXRayRecorder.Instance.TraceMethod("Get Client IP", () => GetClientIP()); ;
             News = GetAWSNews();
             CaptureUserInfo(ClientIP);
         }
