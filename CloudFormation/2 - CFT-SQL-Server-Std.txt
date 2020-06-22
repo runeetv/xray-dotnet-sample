@@ -26,8 +26,8 @@
             "MaxLength": "41",
             "MinLength": "6",
             "NoEcho": "true",
-            "Type": "String",
-            "Default": "Admin123"
+            "Type": "String"
+            
         },
         "DBEngine": {
             "Description": "Select Database Engine",
