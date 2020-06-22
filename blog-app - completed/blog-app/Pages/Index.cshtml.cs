@@ -107,6 +107,9 @@ namespace blog_app.Pages
       
         private void CaptureUserInfo(string ClientI)
         {
+            if (_configuration["Execute"] == "Local")
+                return;
+
             _AWSHelper = new AWSHelper();
             _AWSHelper.AddMessageToSQS(_configuration["SQSServiceURL"], ClientIP);
         }

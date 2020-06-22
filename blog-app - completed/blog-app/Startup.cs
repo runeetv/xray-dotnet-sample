@@ -27,10 +27,13 @@ namespace blog_app
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            //services.AddTransient<IBlogRepository, MockBlogRepository>();
-            services.AddTransient<IBlogRepository, BlogRepository>();
+            if(Configuration["Execute"] == "Local")
+                services.AddTransient<IBlogRepository, MockBlogRepository>();
+            else
+                services.AddTransient<IBlogRepository, BlogRepository>();
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(Configuration["LocalSqlConnection"]));
+            services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(Configuration["RemoteSqlConnectinstring"]));
 
         }
 
@@ -45,7 +48,7 @@ namespace blog_app
             {
                 app.UseExceptionHandler("/Error");
             }
-
+            app.UseXRay("XRay-blog-app");
             app.UseStaticFiles();
 
             app.UseRouting();

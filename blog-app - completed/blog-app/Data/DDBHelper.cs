@@ -12,14 +12,15 @@ namespace blog_app.Data
 {
     public class DDBHelper
     {
-        private AWSCredentials _credentials = new Amazon.Runtime.StoredProfileAWSCredentials("Anuja");
+        //private AWSCredentials _credentials = new Amazon.Runtime.StoredProfileAWSCredentials("Anuja");
         private AmazonDynamoDBClient _ddbClient;
         private Table _ddbTable;
 
 
         public DDBHelper(string ddbTableName)
         {
-            _ddbClient = new AmazonDynamoDBClient(_credentials, RegionEndpoint.USEast1);
+            //_ddbClient = new AmazonDynamoDBClient(_credentials, RegionEndpoint.USEast1);
+            _ddbClient = new AmazonDynamoDBClient(RegionEndpoint.USEast1);
             _ddbTable = Table.LoadTable(_ddbClient, ddbTableName);            
         }
       
