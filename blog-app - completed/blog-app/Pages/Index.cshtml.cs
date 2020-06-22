@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Http;
 using System.Xml.Linq;
 using Microsoft.Extensions.Configuration;
 using blog_app.Data;
+using Amazon.XRay.Recorder.Handlers.System.Net;
+using System.Net;
 
 namespace blog_app.Pages
 {
@@ -57,8 +59,8 @@ namespace blog_app.Pages
             }
             else
             {
-                _AWSHelper = new AWSHelper();
-                _ddbHelper = new DDBHelper(_configuration["DynamoDBTable"]);
+                _AWSHelper = new AWSHelper(_configuration);
+                _ddbHelper = new DDBHelper(_configuration);
                 var doc = _ddbHelper.GetItems(1);
                 var filename = doc["ad-s3-filename"];
 
@@ -82,7 +84,15 @@ namespace blog_app.Pages
         {
             string rssFeedUrl = "http://feeds.feedburner.com/AmazonWebServicesBlog";
             List<News> feeds = new List<News>();
-            XDocument xDoc = XDocument.Load(rssFeedUrl);
+
+            
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(rssFeedUrl); // enter desired url            
+            var response = request.GetResponseTraced();
+
+            XDocument xDoc = XDocument.Load(response.GetResponseStream());
+
+            //XDocument xDoc = XDocument.Load(rssFeedUrl);
             var items = (from x in xDoc.Descendants("item")
                          select new
                          {
@@ -110,7 +120,7 @@ namespace blog_app.Pages
             if (_configuration["Execute"] == "Local")
                 return;
 
-            _AWSHelper = new AWSHelper();
+            _AWSHelper = new AWSHelper(_configuration);
             _AWSHelper.AddMessageToSQS(_configuration["SQSServiceURL"], ClientIP);
         }
 

@@ -14,18 +14,32 @@ namespace blog_app.Data
 {
     public class AWSHelper
     {
-
-        //private AWSCredentials _credentials = new Amazon.Runtime.StoredProfileAWSCredentials("Anuja");
+        
         private AWSCredentials _credentials;
-        private AmazonS3Client _s3Client;        
+        private AmazonS3Client _s3Client;
+        private AmazonSQSClient _amazonSQSClient;
+        private IConfiguration _configuration;
 
-        public AWSHelper()
+        public AWSHelper(IConfiguration configuration)
         {
-
-            //_s3Client = new AmazonS3Client(_credentials, Amazon.RegionEndpoint.USEast1);
-            _s3Client = new AmazonS3Client(Amazon.RegionEndpoint.USEast1);
+            _configuration = configuration;
+            ConfigClient();
         }
 
+        private void ConfigClient()
+        {
+            if (string.Equals(_configuration["Execute"], "Local", StringComparison.OrdinalIgnoreCase) == true)
+            {
+                _credentials = new Amazon.Runtime.StoredProfileAWSCredentials(_configuration["AWSProfileName"]);
+                _s3Client = new AmazonS3Client(_credentials, Amazon.RegionEndpoint.USEast1);
+                _amazonSQSClient = new AmazonSQSClient(_credentials, Amazon.RegionEndpoint.USEast1);
+            }
+            else
+            {
+                _s3Client = new AmazonS3Client(Amazon.RegionEndpoint.USEast1);
+                _amazonSQSClient = new AmazonSQSClient(Amazon.RegionEndpoint.USEast1);
+            }
+        }
 
         public async Task<byte[]> GetImageFromS3Bucket(string bucketName, string imageName)
         {
@@ -45,13 +59,9 @@ namespace blog_app.Data
         public void AddMessageToSQS( string serviceUrl,string clientIP)
         {
 
-            var userLog = "{'User ip':'" + clientIP + "','TimeStamp':'"+ DateTime.Now.ToString()+"' }";
-            //AmazonSQSClient amazonSQSClient = new AmazonSQSClient(_credentials, Amazon.RegionEndpoint.USEast1);
-            AmazonSQSClient amazonSQSClient = new AmazonSQSClient(Amazon.RegionEndpoint.USEast1);
+            var userLog = "{'User ip':'" + clientIP + "','TimeStamp':'"+ DateTime.Now.ToString()+"' }";            
             SendMessageRequest sendRequest = new SendMessageRequest(serviceUrl, userLog);
-
-            var result = amazonSQSClient.SendMessageAsync(sendRequest).Result;
-
+            var result = _amazonSQSClient.SendMessageAsync(sendRequest).Result;
         }
 
         

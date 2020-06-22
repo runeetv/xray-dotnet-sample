@@ -89,6 +89,59 @@
           "lib/netstandard2.0/AWSXRayRecorder.Handlers.AspNetCore.dll": {}
         }
       },
+      "AWSXRayRecorder.Handlers.AwsSdk/2.8.1": {
+        "type": "package",
+        "dependencies": {
+          "AWSSDK.Core": "3.3.25.1",
+          "AWSXRayRecorder.Core": "2.9.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AWSXRayRecorder.Handlers.AwsSdk.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSXRayRecorder.Handlers.AwsSdk.dll": {}
+        }
+      },
+      "AWSXRayRecorder.Handlers.EntityFramework/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "AWSXRayRecorder.Core": "2.9.0",
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AWSXRayRecorder.Handlers.EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSXRayRecorder.Handlers.EntityFramework.dll": {}
+        }
+      },
+      "AWSXRayRecorder.Handlers.SqlServer/2.7.1": {
+        "type": "package",
+        "dependencies": {
+          "AWSSDK.Core": "3.3.25.1",
+          "AWSXRayRecorder.Core": "2.9.0",
+          "System.Data.SqlClient": "4.4.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AWSXRayRecorder.Handlers.SqlServer.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSXRayRecorder.Handlers.SqlServer.dll": {}
+        }
+      },
+      "AWSXRayRecorder.Handlers.System.Net/2.7.1": {
+        "type": "package",
+        "dependencies": {
+          "AWSSDK.Core": "3.3.25.1",
+          "AWSXRayRecorder.Core": "2.9.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/AWSXRayRecorder.Handlers.System.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSXRayRecorder.Handlers.System.Net.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Http/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -876,6 +929,31 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
+        }
+      },
+      "System.Data.SqlClient/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.Registry": "4.4.0",
+          "System.Security.Principal.Windows": "4.4.0",
+          "System.Text.Encoding.CodePages": "4.4.0",
+          "runtime.native.System.Data.SqlClient.sni": "4.4.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Data.SqlClient.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Data.SqlClient.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard2.0/System.Data.SqlClient.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Diagnostics.Debug/4.3.0": {
@@ -2136,6 +2214,64 @@
         "awsxrayrecorder.handlers.aspnetcore.nuspec",
         "lib/netstandard2.0/AWSXRayRecorder.Handlers.AspNetCore.dll",
         "lib/netstandard2.0/AWSXRayRecorder.Handlers.AspNetCore.xml"
+      ]
+    },
+    "AWSXRayRecorder.Handlers.AwsSdk/2.8.1": {
+      "sha512": "G49Ohh2FSAlN6tFGY0IUpNySuv918ouHNAwiwTvZ5ab7XPegxzXNrcn2uhK6ypD77iiyee/hf1bzYx2YELxmHw==",
+      "type": "package",
+      "path": "awsxrayrecorder.handlers.awssdk/2.8.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "awsxrayrecorder.handlers.awssdk.2.8.1.nupkg.sha512",
+        "awsxrayrecorder.handlers.awssdk.nuspec",
+        "lib/net45/AWSXRayRecorder.Handlers.AwsSdk.dll",
+        "lib/net45/AWSXRayRecorder.Handlers.AwsSdk.xml",
+        "lib/netstandard2.0/AWSXRayRecorder.Handlers.AwsSdk.dll",
+        "lib/netstandard2.0/AWSXRayRecorder.Handlers.AwsSdk.xml"
+      ]
+    },
+    "AWSXRayRecorder.Handlers.EntityFramework/1.0.1": {
+      "sha512": "bNnyNEBfjOUQN9MCWfc5oi+3DcbfmBCAGhW9QqCcm7oikRhwgycZR+vOrjnU0weO4kT+hvZapRHrIgQ2Wp7vzQ==",
+      "type": "package",
+      "path": "awsxrayrecorder.handlers.entityframework/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "awsxrayrecorder.handlers.entityframework.1.0.1.nupkg.sha512",
+        "awsxrayrecorder.handlers.entityframework.nuspec",
+        "lib/netstandard2.0/AWSXRayRecorder.Handlers.EntityFramework.dll",
+        "lib/netstandard2.0/AWSXRayRecorder.Handlers.EntityFramework.xml"
+      ]
+    },
+    "AWSXRayRecorder.Handlers.SqlServer/2.7.1": {
+      "sha512": "TxaB/VdTbjJhcLjrbDkdopGvZ6zyP/MzCcPAGSeU11RSQ552cH5jw3SA5AyOzZNjuRI7sKlYY1cF9yz3mf9Wgw==",
+      "type": "package",
+      "path": "awsxrayrecorder.handlers.sqlserver/2.7.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "awsxrayrecorder.handlers.sqlserver.2.7.1.nupkg.sha512",
+        "awsxrayrecorder.handlers.sqlserver.nuspec",
+        "lib/net45/AWSXRayRecorder.Handlers.SqlServer.dll",
+        "lib/net45/AWSXRayRecorder.Handlers.SqlServer.xml",
+        "lib/netstandard2.0/AWSXRayRecorder.Handlers.SqlServer.dll",
+        "lib/netstandard2.0/AWSXRayRecorder.Handlers.SqlServer.xml"
+      ]
+    },
+    "AWSXRayRecorder.Handlers.System.Net/2.7.1": {
+      "sha512": "rSmZnv3nhF5VwWQPhPHlbSJgpsu257jMP5CkZItu98jYJZWWYNOmvceFdKZ2wPbuOz/oJ4iEQBUIUxowvCBf/g==",
+      "type": "package",
+      "path": "awsxrayrecorder.handlers.system.net/2.7.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "awsxrayrecorder.handlers.system.net.2.7.1.nupkg.sha512",
+        "awsxrayrecorder.handlers.system.net.nuspec",
+        "lib/net45/AWSXRayRecorder.Handlers.System.Net.dll",
+        "lib/net45/AWSXRayRecorder.Handlers.System.Net.xml",
+        "lib/netstandard2.0/AWSXRayRecorder.Handlers.System.Net.dll",
+        "lib/netstandard2.0/AWSXRayRecorder.Handlers.System.Net.xml"
       ]
     },
     "Microsoft.AspNetCore.Http/2.0.0": {
@@ -3584,6 +3720,74 @@
         "ref/netstandard2.0/System.Configuration.ConfigurationManager.xml",
         "system.configuration.configurationmanager.4.5.0.nupkg.sha512",
         "system.configuration.configurationmanager.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Data.SqlClient/4.4.0": {
+      "sha512": "fxb9ghn1k1Ua7FFdlvtiBOD4/PsQvD/fk2KnhS+FK7VC6OggEx6P+lP1P0+KMb5V2dqS1+FbR7HCenoqzJMNIA==",
+      "type": "package",
+      "path": "system.data.sqlclient/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net451/System.Data.SqlClient.dll",
+        "lib/net46/System.Data.SqlClient.dll",
+        "lib/net461/System.Data.SqlClient.dll",
+        "lib/netstandard1.2/System.Data.SqlClient.dll",
+        "lib/netstandard1.3/System.Data.SqlClient.dll",
+        "lib/netstandard2.0/System.Data.SqlClient.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net451/System.Data.SqlClient.dll",
+        "ref/net46/System.Data.SqlClient.dll",
+        "ref/net461/System.Data.SqlClient.dll",
+        "ref/net461/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/System.Data.SqlClient.dll",
+        "ref/netstandard1.2/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/de/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/es/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/fr/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/it/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ja/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ko/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ru/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/zh-hans/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/zh-hant/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/System.Data.SqlClient.dll",
+        "ref/netstandard1.3/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/de/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/es/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/fr/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/it/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ja/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ko/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ru/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/zh-hans/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/zh-hant/System.Data.SqlClient.xml",
+        "ref/netstandard2.0/System.Data.SqlClient.dll",
+        "ref/netstandard2.0/System.Data.SqlClient.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netstandard1.3/System.Data.SqlClient.dll",
+        "runtimes/unix/lib/netstandard2.0/System.Data.SqlClient.dll",
+        "runtimes/win/lib/net451/System.Data.SqlClient.dll",
+        "runtimes/win/lib/net46/System.Data.SqlClient.dll",
+        "runtimes/win/lib/net461/System.Data.SqlClient.dll",
+        "runtimes/win/lib/netstandard1.3/System.Data.SqlClient.dll",
+        "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.dll",
+        "system.data.sqlclient.4.4.0.nupkg.sha512",
+        "system.data.sqlclient.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
@@ -6533,6 +6737,10 @@
       "AWSSDK.SQS >= 3.3.102.127",
       "AWSXRayRecorder.Core >= 2.9.0",
       "AWSXRayRecorder.Handlers.AspNetCore >= 2.7.1",
+      "AWSXRayRecorder.Handlers.AwsSdk >= 2.8.1",
+      "AWSXRayRecorder.Handlers.EntityFramework >= 1.0.1",
+      "AWSXRayRecorder.Handlers.SqlServer >= 2.7.1",
+      "AWSXRayRecorder.Handlers.System.Net >= 2.7.1",
       "Microsoft.EntityFrameworkCore >= 3.1.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.5"
     ]
@@ -6598,6 +6806,22 @@
             "version": "[2.9.0, )"
           },
           "AWSXRayRecorder.Handlers.AspNetCore": {
+            "target": "Package",
+            "version": "[2.7.1, )"
+          },
+          "AWSXRayRecorder.Handlers.AwsSdk": {
+            "target": "Package",
+            "version": "[2.8.1, )"
+          },
+          "AWSXRayRecorder.Handlers.EntityFramework": {
+            "target": "Package",
+            "version": "[1.0.1, )"
+          },
+          "AWSXRayRecorder.Handlers.SqlServer": {
+            "target": "Package",
+            "version": "[2.7.1, )"
+          },
+          "AWSXRayRecorder.Handlers.System.Net": {
             "target": "Package",
             "version": "[2.7.1, )"
           },

@@ -63,6 +63,22 @@
               "target": "Package",
               "version": "[2.7.1, )"
             },
+            "AWSXRayRecorder.Handlers.AwsSdk": {
+              "target": "Package",
+              "version": "[2.8.1, )"
+            },
+            "AWSXRayRecorder.Handlers.EntityFramework": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "AWSXRayRecorder.Handlers.SqlServer": {
+              "target": "Package",
+              "version": "[2.7.1, )"
+            },
+            "AWSXRayRecorder.Handlers.System.Net": {
+              "target": "Package",
+              "version": "[2.7.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.5, )"

@@ -11,6 +11,8 @@ using blog_app.Models;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Amazon.XRay.Recorder.Handlers.AwsSdk;
+using Amazon.XRay.Recorder.Handlers.EntityFramework;
 
 namespace blog_app
 {
@@ -27,13 +29,14 @@ namespace blog_app
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            if(Configuration["Execute"] == "Local")
+            if(string.Equals(Configuration["Execute"],"Local",StringComparison.OrdinalIgnoreCase)== true)
                 services.AddTransient<IBlogRepository, MockBlogRepository>();
             else
                 services.AddTransient<IBlogRepository, BlogRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(Configuration["RemoteSqlConnectinstring"]));
+            services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(Configuration["RemoteSqlConnectinstring"]).AddXRayInterceptor(true));
+            AWSSDKHandler.RegisterXRayForAllServices(); //place this before any instantiation of AmazonServiceClient
 
         }
 
