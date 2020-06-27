@@ -36,6 +36,7 @@ namespace blog_app.Pages
             _logger = logger;
             _blogRepository = blogRepository;
             _accessor = accessor;
+            _configuration = configuration;
 
             Categories = _blogRepository.GetBlogCategories();
             Posts = _blogRepository.GetBlogPosts();
