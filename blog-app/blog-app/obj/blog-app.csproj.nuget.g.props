@@ -12,4 +12,11 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">C:\Users\runeetv\.nuget\packages\awssdk.core\3.3.107.18</PkgAWSSDK_Core>
+    <PkgAWSSDK_XRay Condition=" '$(PkgAWSSDK_XRay)' == '' ">C:\Users\runeetv\.nuget\packages\awssdk.xray\3.3.3</PkgAWSSDK_XRay>
+    <PkgAWSSDK_SQS Condition=" '$(PkgAWSSDK_SQS)' == '' ">C:\Users\runeetv\.nuget\packages\awssdk.sqs\3.3.103.5</PkgAWSSDK_SQS>
+    <PkgAWSSDK_S3 Condition=" '$(PkgAWSSDK_S3)' == '' ">C:\Users\runeetv\.nuget\packages\awssdk.s3\3.3.111.19</PkgAWSSDK_S3>
+    <PkgAWSSDK_DynamoDBv2 Condition=" '$(PkgAWSSDK_DynamoDBv2)' == '' ">C:\Users\runeetv\.nuget\packages\awssdk.dynamodbv2\3.3.106.26</PkgAWSSDK_DynamoDBv2>
+  </PropertyGroup>
 </Project>
