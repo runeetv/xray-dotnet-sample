@@ -5,6 +5,7 @@
         "HashKeyElementName": {
             "Description": "HashType PrimaryKey Name",
             "Type": "String",
+            "Default": "Id",
             "AllowedPattern": "[a-zA-Z0-9]*",
             "MinLength": "1",
             "MaxLength": "2048",
@@ -13,7 +14,7 @@
         "HashKeyElementType": {
             "Description": "HashType PrimaryKey Type",
             "Type": "String",
-            "Default": "S",
+            "Default": "N",
             "AllowedPattern": "[S|N]",
             "MinLength": "1",
             "MaxLength": "1",
