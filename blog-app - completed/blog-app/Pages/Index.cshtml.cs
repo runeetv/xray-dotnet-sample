@@ -68,7 +68,6 @@ namespace blog_app.Pages
 
                 imageBinary = await _AWSHelper.GetImageFromS3Bucket(_configuration["S3BucketName"],filename);
             }
-
             return imageBinary;
         }
         public void OnGet()

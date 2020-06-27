@@ -10,6 +10,8 @@ using System.Web;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Xml.Linq;
+using blog_app.Data;
+using Microsoft.Extensions.Configuration;
 
 namespace blog_app.Pages
 {
@@ -18,6 +20,9 @@ namespace blog_app.Pages
         private readonly ILogger<IndexModel> _logger;
         private IBlogRepository _blogRepository;
         private IHttpContextAccessor _accessor;
+        private DDBHelper _ddbHelper;
+        private IConfiguration _configuration;
+        private AWSHelper _AWSHelper;
 
         public List<BlogCategory> Categories { get; set; }
         public List<BlogPost> Posts { get; set; }
@@ -26,7 +31,7 @@ namespace blog_app.Pages
         public List<News> News { get; set; }
 
         public byte[] Image { get; set; }
-        public IndexModel(ILogger<IndexModel> logger , IBlogRepository blogRepository , IHttpContextAccessor accessor)
+        public IndexModel(ILogger<IndexModel> logger , IBlogRepository blogRepository , IHttpContextAccessor accessor, IConfiguration configuration)
         {
             _logger = logger;
             _blogRepository = blogRepository;
